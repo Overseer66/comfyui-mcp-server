@@ -2,6 +2,13 @@
 
 A server implementation for integrating ComfyUI with MCP.
 
+⚠️ **IMPORTANT: Required ComfyUI Server**
+This MCP server requires an active ComfyUI server to function. You must either:
+1. Host your own ComfyUI server
+2. Have access to an existing ComfyUI server address
+
+Without a running ComfyUI server, this MCP server will not work properly.
+
 ## Debugging
 
 ### ComfyUI Debugging
