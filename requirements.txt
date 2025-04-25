@@ -1,0 +1,4 @@
+mcp[cli]
+websocket-client
+python-dotenv
+

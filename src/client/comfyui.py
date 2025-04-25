@@ -1,5 +1,4 @@
 import os
-import base64
 import websocket
 import json
 import uuid
@@ -24,8 +23,7 @@ class ComfyUI:
         url = f"{self.url}/view?{url_values}"
         req = urllib.request.Request(url, headers=self.headers)
         with urllib.request.urlopen(req) as response:
-            image_bytes = response.read()
-            return base64.b64encode(image_bytes).decode("utf-8")
+            return response.read()
 
     def get_history(self, prompt_id):
         url = f"{self.url}/history/{prompt_id}"

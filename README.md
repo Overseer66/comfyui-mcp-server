@@ -6,12 +6,12 @@ A server implementation for integrating ComfyUI with MCP.
 
 ### ComfyUI Debugging
 ```bash
-python test_comfyui.py
+python src/test_comfyui.py
 ```
 
 ### MCP Debugging
 ```bash
-mcp dev server.py
+mcp dev src/server.py
 ```
 
 ## Installation and Configuration
