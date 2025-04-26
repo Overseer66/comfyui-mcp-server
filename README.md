@@ -61,8 +61,11 @@
 
         ```
         # You should ask to agent like this.
-        Run workflow with text_to_image.json
+        Run comfyui workflow with text_to_image.json
         ```
+
+    - example image of CursorAI
+      ![](resources/run_workflow_from_file_demo.png)
 
   - **run_workflow_with_json**
 
@@ -70,8 +73,12 @@
 
         ```
         # You should ask to agent like this.
-        Run workflow with this 
+        Run comfyui workflow with this 
         {
+          "3": {
+              "inputs": {
+                  "seed": 156680208700286,
+                  "steps": 20,
             ... (workflow JSON example)
         }
         ```
