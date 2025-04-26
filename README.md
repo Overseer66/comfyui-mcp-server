@@ -146,4 +146,4 @@ You can also run the server remotely using SSE (Server-Sent Events) transport.
     }
     ```
 
-Notice: When adding new workflows as tools, you need to rebuild and redeploy the Docker images to make them available.
+**Notice**: When adding new workflows as tools, you need to rebuild and redeploy the Docker images to make them available.
