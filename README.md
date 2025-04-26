@@ -70,6 +70,14 @@ Configure `mcp.json`:
 ```
 
 ### 2. Using Docker
+When using Docker, downloading images to a local folder using the `download_image` tool might be challenging since the Docker container doesn't share the same filesystem as your host machine.
+
+When using Docker, consider these configuration points:
+  1. Set `RETURN_URL=false` in `.env` to receive binary data instead of image URLs
+  1. Set `COMFYUI_HOST` in `.env` to the appropriate host address (e.g., `host.docker.internal` or your server's IP)
+
+Note: Docker deployments with MCP may experience slower performance with large image payloads.
+
 
 #### Build Docker Image
 ```bash
