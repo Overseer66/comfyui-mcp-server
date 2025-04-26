@@ -41,13 +41,15 @@ class ComfyUI:
         )
         return json.loads(urllib.request.urlopen(req).read())
     
-    async def process_workflow(self, workflow_name: str, params: Dict[str, Any], return_url: bool = False):
-        workflow_path = os.path.join(os.environ.get("WORKFLOW_DIR", "workflows"), f"{workflow_name}.json")
-        if not os.path.exists(workflow_path):
-            raise Exception(f"Workflow {workflow_name} not found")
-
-        with open(workflow_path, "r", encoding='utf-8') as f:
-            prompt = json.load(f)
+    async def process_workflow(self, workflow: Any, params: Dict[str, Any], return_url: bool = False):
+        if isinstance(workflow, str):
+            workflow_path = os.path.join(os.environ.get("WORKFLOW_DIR", "workflows"), f"{workflow}.json")
+            if not os.path.exists(workflow_path):
+                raise Exception(f"Workflow {workflow} not found")
+            with open(workflow_path, "r", encoding='utf-8') as f:
+                prompt = json.load(f)
+        else:
+            prompt = workflow
 
         self.update_workflow_params(prompt, params)
 

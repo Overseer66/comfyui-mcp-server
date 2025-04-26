@@ -1,4 +1,5 @@
 import os
+import json
 import urllib.request
 import urllib.parse
 from typing import Any
@@ -40,6 +41,40 @@ async def download_image(url: str, save_path: str) -> Any:
     urllib.request.urlretrieve(url, save_path)
     return {"success": True}
 
+@mcp.tool()
+async def run_workflow_from_file(file_path: str) -> Any:
+    """Run a workflow from a file.
+    
+    Args:
+        file_path: The absolute path to the file to run.
+    """
+    with open(file_path, "r", encoding="utf-8") as f:
+        workflow = json.load(f)
+    
+    auth = os.environ.get("COMFYUI_AUTHENTICATION")
+    comfy = ComfyUI(
+        url=f'http://{os.environ.get("COMFYUI_HOST", "localhost")}:{os.environ.get("COMFYUI_PORT", 8188)}',
+        authentication=auth
+    )
+    images = await comfy.process_workflow(workflow, {}, return_url=os.environ.get("RETURN_URL", "true").lower() == "true")
+    return images
+
+@mcp.tool()
+async def run_workflow_from_json(json_data: dict) -> Any:
+    """Run a workflow from a JSON data.
+    
+    Args:
+        json_data: The JSON data to run.
+    """
+    workflow = json_data
+    
+    auth = os.environ.get("COMFYUI_AUTHENTICATION")
+    comfy = ComfyUI(
+        url=f'http://{os.environ.get("COMFYUI_HOST", "localhost")}:{os.environ.get("COMFYUI_PORT", 8188)}',
+        authentication=auth
+    )
+    images = await comfy.process_workflow(workflow, {}, return_url=os.environ.get("RETURN_URL", "true").lower() == "true")
+    return images
 
 if __name__ == "__main__":
     mcp.run(transport=os.environ.get("MCP_TRANSPORT", "stdio"))
