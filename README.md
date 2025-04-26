@@ -2,10 +2,10 @@
 
 ## 1. Overview
 
-    - A server implementation for integrating ComfyUI with MCP.
-    - ⚠️ IMPORTANT: This server requires a running ComfyUI server.
-        - You must either host your own ComfyUI server,
-        - or have access to an existing ComfyUI server address.
+- A server implementation for integrating ComfyUI with MCP.
+- ⚠️ IMPORTANT: This server requires a running ComfyUI server.
+    - You must either host your own ComfyUI server,
+    - or have access to an existing ComfyUI server address.
 
 ---
 
