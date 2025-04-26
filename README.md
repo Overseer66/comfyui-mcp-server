@@ -76,7 +76,7 @@ When using Docker, consider these configuration points:
   1. Set `RETURN_URL=false` in `.env` to receive binary data instead of image URLs
   1. Set `COMFYUI_HOST` in `.env` to the appropriate host address (e.g., `host.docker.internal` or your server's IP)
 
-Note: Docker deployments with MCP may experience slower performance with large image payloads.
+Note: When configured to receive image data as bytes (RETURN_URL=false), Docker deployments with MCP may encounter errors due to the large size of image payload data exceeding response limits.
 
 
 #### Build Docker Image
