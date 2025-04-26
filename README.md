@@ -13,15 +13,15 @@
 
   ### 2.1 ComfyUI Debugging
 
-      ```bash
-      python src/test_comfyui.py
-      ```
+  ```bash
+  python src/test_comfyui.py
+  ```
 
   ### 2.2 MCP Debugging
 
-      ```bash
-      mcp dev src/server.py
-      ```
+  ```bash
+  mcp dev src/server.py
+  ```
 
 ---
 
