@@ -103,3 +103,45 @@ Configure `mcp.json`:
   }
 }
 ```
+
+##### Using existing images
+You can also use pre-built Docker images
+Configure `mcp.json`:
+```json
+{
+  "mcpServers": {
+    "comfyui": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-p",
+        "3001:3000",
+        "overseer66/mcp-comfyui"
+      ]
+    }
+  }
+}
+```
+
+
+##### Using SSE Transport
+You can also run the server remotely using SSE (Server-Sent Events) transport.
+
+1. Run the SSE server using Docker:
+    ```bash
+    docker run -i --rm -p 8001:8000 overseer66/mcp-comfyui-sse
+    ```
+1. Configure 'mcp.json':
+    ```json
+    {
+      "mcpServers": {
+        "comfyui2": {
+          "url": "http://localhost:8001/sse" // change localhost to your IP or domain
+        }
+      }
+    }
+    ```
+
+Notice: When adding new workflows as tools, you need to rebuild and redeploy the Docker images to make them available.
