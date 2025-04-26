@@ -119,10 +119,9 @@
   #### 5.2.1 Build Docker Image
 
   ```bash
+  # First build image
   docker image build -t mcp/comfyui .
   ```
-
-  #### 5.2.2 MCP Configuration Example
 
   ```json
   {
@@ -142,7 +141,9 @@
   }
   ```
 
-  #### 5.2.3 Using Existing Images
+  #### 5.2.2 Using Existing Images
+
+  Also you can use prebuilt image.
 
   ```json
   {
@@ -162,7 +163,7 @@
   }
   ```
 
-  #### 5.2.4 Using SSE Transport
+  #### 5.2.3 Using SSE Transport
 
   1. Run the SSE server with Docker:
 
