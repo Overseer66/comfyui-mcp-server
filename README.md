@@ -134,11 +134,13 @@ You can also run the server remotely using SSE (Server-Sent Events) transport.
     docker run -i --rm -p 8001:8000 overseer66/mcp-comfyui-sse
     ```
 1. Configure 'mcp.json':
+    
+    Change localhost to your IP or domain
     ```json
     {
       "mcpServers": {
-        "comfyui2": {
-          "url": "http://localhost:8001/sse" // change localhost to your IP or domain
+        "comfyui": {
+          "url": "http://localhost:8001/sse" 
         }
       }
     }
