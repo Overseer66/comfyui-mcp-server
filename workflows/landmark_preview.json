@@ -1,0 +1,77 @@
+{
+  "comment": "Interactive landmark preview workflow - AI labels with real-time browser visualization",
+
+  "1_load_image": {
+    "inputs": {
+      "image": "dog_sample.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Dog Image"
+    }
+  },
+
+  "2_grounding_dino": {
+    "inputs": {
+      "images": ["1_load_image", 0],
+      "text_prompt": "dog nose . dog left eye . dog right eye . dog left ear . dog right ear . dog neck . dog left front paw . dog right front paw . dog left back paw . dog right back paw . dog tail",
+      "box_threshold": 0.35,
+      "text_threshold": 0.25
+    },
+    "class_type": "GroundingDINOAnnotatorNode",
+    "_meta": {
+      "title": "AI Keypoint Detection (GroundingDINO)"
+    }
+  },
+
+  "3_draw_keypoints": {
+    "inputs": {
+      "images": ["1_load_image", 0],
+      "annotations": ["2_grounding_dino", 0],
+      "radius": 8,
+      "thickness": 3,
+      "show_labels": true,
+      "show_confidence": true
+    },
+    "class_type": "DrawKeypointsNode",
+    "_meta": {
+      "title": "Visualize Landmarks"
+    }
+  },
+
+  "4_save_preview": {
+    "inputs": {
+      "filename_prefix": "landmark_preview",
+      "images": ["3_draw_keypoints", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Preview (Shows in Browser)"
+    }
+  },
+
+  "5_annotation_quality": {
+    "inputs": {
+      "images": ["1_load_image", 0],
+      "annotations": ["2_grounding_dino", 0],
+      "min_visible_keypoints": 5,
+      "max_occlusion": 0.7,
+      "min_confidence": 0.3
+    },
+    "class_type": "AnnotationQualityFilterNode",
+    "_meta": {
+      "title": "Quality Metrics"
+    }
+  },
+
+  "6_save_filtered": {
+    "inputs": {
+      "filename_prefix": "landmark_filtered",
+      "images": ["5_annotation_quality", "filtered_images"]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save High-Quality Only"
+    }
+  }
+}

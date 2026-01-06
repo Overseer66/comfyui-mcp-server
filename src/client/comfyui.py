@@ -54,7 +54,10 @@ class ComfyUI:
         self.update_workflow_params(prompt, params)
 
         ws = websocket.WebSocket()
-        ws_url = f"ws://{os.environ.get("COMFYUI_HOST", "localhost")}:{os.environ.get("COMFYUI_PORT", 8188)}/ws?clientId={self.client_id}"
+        ws_url = (
+            f"ws://{os.environ.get('COMFYUI_HOST', 'localhost')}:"
+            f"{os.environ.get('COMFYUI_PORT', 8188)}/ws?clientId={self.client_id}"
+        )
         
         if self.authentication:
             ws.connect(ws_url, header=[f"Authorization: {self.authentication}"])

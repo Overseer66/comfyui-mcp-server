@@ -1,0 +1,29 @@
+{
+    "1": {
+        "inputs": {
+            "message": "Hello World from Sub-Agent!",
+            "font_size": 64,
+            "width": 1024,
+            "height": 512,
+            "bg_color": "#2C3E50",
+            "text_color": "#ECF0F1"
+        },
+        "class_type": "HelloWorldNode",
+        "_meta": {
+            "title": "Hello World Generator"
+        }
+    },
+    "2": {
+        "inputs": {
+            "filename_prefix": "hello_world",
+            "images": [
+                "1",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Hello World Image"
+        }
+    }
+}

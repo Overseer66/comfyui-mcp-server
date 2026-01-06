@@ -1,0 +1,3 @@
+[submodule "comfyui-mcp-server"]
+	path = comfyui-mcp-server
+	url = git@github.com:elasticdotventures/comfyui-mcp-server.git
